@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute';
 import Home from './Home';
 import SignIn from './SignIn';
 import ProfilePage from './ProfilePage';
+import AdminProfilePage from './AdminProfilePage';
 
 import './App.css';
 
@@ -17,7 +18,7 @@ const App = () => (
       <Switch>
         <Route path="/" exact component={Home}></Route>
         <Route path="/signin" exact component={SignIn}></Route>
-        <AdminRoute path="/admin" exact component={ProfilePage}></AdminRoute>
+        <AdminRoute path="/admin" exact component={AdminProfilePage}></AdminRoute>
         <PrivateRoute path="/profile" exact component={ProfilePage}></PrivateRoute>
       </Switch>
     </Router>

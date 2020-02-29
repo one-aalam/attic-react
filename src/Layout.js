@@ -34,7 +34,7 @@ const Layout = ({ children, match, history }) => {
                 </React.Fragment>
             )}
 
-            {isAuth() && isAuth().role === 'admin' && (
+            {isAuth() && isAuth().roles.indexOf('ROLE_ADMIN') !== -1 && (
                 <li className="nav-item">
                     <Link className="nav-link" style={isActive('/admin')} to="/admin">
                         {isAuth().name}
@@ -42,7 +42,7 @@ const Layout = ({ children, match, history }) => {
                 </li>
             )}
 
-            {isAuth() && isAuth().role !== 'admin' && (
+            {isAuth() && isAuth().roles.indexOf('ROLE_ADMIN') === -1 && (
                 <li className="nav-item">
                     <Link className="nav-link" style={isActive('/profile')} to="/profile">
                         {isAuth().name}

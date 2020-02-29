@@ -8,7 +8,7 @@ const Signin = ({ history }) => {
 
     const onSuccess = response => {
         authenticate(response, () => {
-            isAuth() && isAuth().role === 'admin' ? history.push('/admin') : history.push('/profile');
+            isAuth() && isAuth().roles.indexOf('ROLE_ADMIN') !== -1 ? history.push('/admin') : history.push('/profile');
         });
     };
 
