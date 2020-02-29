@@ -1,8 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+
+import AdminRoute from './AdminRoute';
+import PrivateRoute from './PrivateRoute';
 import Home from './Home';
 import SignIn from './SignIn';
+import ProfilePage from './ProfilePage';
 
 import './App.css';
 
@@ -10,23 +14,11 @@ import './App.css';
 const App = () => (
   <div className="App">
     <Router>
-      <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/signin">Sign In</Link>
-            </li>
-          </ul>
-      </nav>
       <Switch>
-        <Route path="/signin">
-          <SignIn/>
-        </Route>
-        <Route path="/">
-          <Home/>
-        </Route>
+        <Route path="/" exact component={Home}></Route>
+        <Route path="/signin" exact component={SignIn}></Route>
+        <AdminRoute path="/admin" exact component={ProfilePage}></AdminRoute>
+        <PrivateRoute path="/profile" exact component={ProfilePage}></PrivateRoute>
       </Switch>
     </Router>
   </div>

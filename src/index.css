@@ -18,6 +18,17 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: "PT Serif", serif;
 }
+.nav {
+  display: flex;
+  list-style: none;
+}
+.nav-item {
+  padding-left: 10px;
+}
+.nav-link {
+  text-decoration: none;
+  color: grey;
+}
 
 
 code {

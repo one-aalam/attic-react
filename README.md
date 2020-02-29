@@ -15,7 +15,7 @@ React client App for the [Attic server](https://github.com/one-aalam/attic) buil
 - Facebook Login
 
 ## Coming Soon!
- - [ ] Application Shell
+ - [X] Application Shell
  - [ ] Tailwind CSS
  - [ ] Toast Notification
  - [ ] Private and Admin Routes
