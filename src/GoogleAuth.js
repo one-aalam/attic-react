@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import GoogleLogin from 'react-google-login';
 import config from './config';
+import Button from './components/Button';
 
 const GoogleAuth =  ( { onSuccess } ) =>  {
   const successFailureCb = response => {
@@ -27,13 +28,12 @@ const GoogleAuth =  ( { onSuccess } ) =>  {
                 onSuccess={successFailureCb}
                 onFailure={successFailureCb}
                 render={renderProps => (
-                    <button
+                    <Button
                         onClick={renderProps.onClick}
                         disabled={renderProps.disabled}
-                        className="btn btn-danger btn-lg btn-block"
                     >
                         <i className="fab fa-google pr-2"></i> Login with Google
-                    </button>
+                    </Button>
                 )}
                 cookiePolicy={'single_host_origin'}
             />

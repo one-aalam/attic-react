@@ -9,11 +9,9 @@ import SignIn from './SignIn';
 import ProfilePage from './ProfilePage';
 import AdminProfilePage from './AdminProfilePage';
 
-import './App.css';
-
 
 const App = () => (
-  <div className="App">
+  <div className="App flex flex-col w-3/4 mx-auto my-12 items-center">
     <Router>
       <Switch>
         <Route path="/" exact component={Home}></Route>

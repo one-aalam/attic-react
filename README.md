@@ -16,7 +16,7 @@ React client App for the [Attic server](https://github.com/one-aalam/attic) buil
 
 ## Coming Soon!
  - [X] Application Shell
- - [ ] Tailwind CSS
+ - [X] Tailwind CSS - Refer https://tailwindcss.com/docs/controlling-file-size/ for further optimizing the size of CSS bundle
  - [ ] Toast Notification
  - [X] Private and Admin Routes
  - [ ] Registration Page
