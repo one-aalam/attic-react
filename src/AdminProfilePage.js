@@ -10,10 +10,12 @@ const AdminProfilePage = ({ history }) => {
         username: '',
         email: ''
     });
+    const [ users, setUsers ] = useState([]);
 
     const token = getCookie('token');
 
     useEffect(() => loadUserProfile(), [ user.id ]);
+    useEffect(() => loadUsers(), [ user.id ]);
 
     const loadUserProfile = () => {
         axios({
@@ -34,11 +36,36 @@ const AdminProfilePage = ({ history }) => {
             });
     };
 
+    const loadUsers = () => {
+        axios({
+            method: 'GET',
+            url: `${config.SERVER_URI}/users`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(response => setUsers(response.data))
+            .catch(error => {
+                console.log('Couldn\'t pull the profile details', error.response.data.error);
+                if (error.response.status === 401) {
+                    signout(() => {
+                        history.push('/');
+                    });
+                }
+            });
+    };
+
     return (
         <Layout>
             <div className="">
                 <h1 className="">Admin Profile</h1>
                 { user.username } {user.email}
+                <h3>Users</h3>
+                <ul>
+                {
+                    users.map(user => <li key={user.id}>{user.username}</li>)
+                }
+                </ul>
             </div>
         </Layout>
     );
