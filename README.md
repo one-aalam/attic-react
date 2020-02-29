@@ -21,3 +21,4 @@ React client App for the [Attic server](https://github.com/one-aalam/attic) buil
  - [ ] Private and Admin Routes
  - [ ] Registration Page
  - [ ] SignIn page
+ - [ ] Snapshot generation
