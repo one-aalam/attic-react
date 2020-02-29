@@ -18,7 +18,7 @@ React client App for the [Attic server](https://github.com/one-aalam/attic) buil
  - [X] Application Shell
  - [ ] Tailwind CSS
  - [ ] Toast Notification
- - [ ] Private and Admin Routes
+ - [X] Private and Admin Routes
  - [ ] Registration Page
  - [ ] SignIn page
  - [ ] Snapshot generation
