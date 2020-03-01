@@ -1,38 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
-import axios from 'axios';
-import { isAuth, getCookie, signout } from './utils';
-import config from './config';
+import Loader from './components/Loader';
+import { isAuth } from './utils';
+import { getUserProfile } from "./services";
 
 const ProfilePage = ({ history }) => {
+    const userId = isAuth().id;
     const [ user, setUser ] = useState({
         id: '',
         username: '',
         email: ''
     });
+    const [ loading, setLoading ] = useState(true);
 
-    const token = getCookie('token');
-
-    useEffect(() => loadUserProfile(), [ user.id ]);
-
-    const loadUserProfile = () => {
-        axios({
-            method: 'GET',
-            url: `${config.SERVER_URI}/users/${isAuth().id}`,
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then(response => setUser(response.data))
-            .catch(error => {
-                console.log('Couldn\'t pull the profile details', error.response.data.error);
-                if (error.response.status === 401) {
-                    signout(() => {
-                        history.push('/');
-                    });
+    useEffect(() => {
+        const getPageData = async () => {
+            try {
+                const user = await getUserProfile(userId);
+                if (user.data) {
+                    setUser(user.data);;
+                    setLoading(false);
                 }
-            });
-    };
+            } catch(err) {
+                setLoading(false);
+                // react to error
+                console.log('Couldn\'t pull the required details', err.response.data.error);
+            }
+        }
+        getPageData();
+    }, [ userId ]);
+
+    if (loading) {
+        return <Loader/>
+    }
 
     return (
         <Layout>

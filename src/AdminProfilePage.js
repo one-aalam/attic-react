@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
 import Loader from './components/Loader';
-import axios from 'axios';
-import { isAuth, getCookie, signout } from './utils';
-import config from './config';
+import { isAuth } from './utils';
+import { getUserProfile, getUsers } from "./services";
 
 const AdminProfilePage = ({ history }) => {
+    const userId = isAuth().id;
     const [ user, setUser ] = useState({
         id: '',
         username: '',
@@ -14,50 +14,23 @@ const AdminProfilePage = ({ history }) => {
     const [ users, setUsers ] = useState([]);
     const [ loading, setLoading ] = useState(true);
 
-    const token = getCookie('token');
-
-    useEffect(() => loadUserProfile(), [ user.id ]);
-    useEffect(() => loadUsers(), [ user.id ]);
-
-    const loadUserProfile = () => {
-        axios({
-            method: 'GET',
-            url: `${config.SERVER_URI}/users/${isAuth().id}`,
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then(response => setUser(response.data))
-            .catch(error => {
-                console.log('Couldn\'t pull the profile details', error.response.data.error);
-                if (error.response.status === 401) {
-                    signout(() => {
-                        history.push('/');
-                    });
+    useEffect(() => {
+        const getPageData = async () => {
+            try {
+                const [ user, users] = await Promise.all([ getUserProfile(userId), getUsers() ]);
+                if (user.data && users.data) {
+                    setUser(user.data);
+                    setUsers(users.data);
+                    setLoading(false);
                 }
-            }).finally(() => {
+            } catch(err) {
                 setLoading(false);
-            });
-    };
-
-    const loadUsers = () => {
-        axios({
-            method: 'GET',
-            url: `${config.SERVER_URI}/users`,
-            headers: {
-                Authorization: `Bearer ${token}`
+                // react to error
+                console.log('Couldn\'t pull the required details', err.response.data.error);
             }
-        })
-            .then(response => setUsers(response.data))
-            .catch(error => {
-                console.log('Couldn\'t pull the profile details', error.response.data.error);
-                if (error.response.status === 401) {
-                    signout(() => {
-                        history.push('/');
-                    });
-                }
-            });
-    };
+        }
+        getPageData();
+    }, [ userId ]);
 
     if (loading) {
         return <Loader/>
