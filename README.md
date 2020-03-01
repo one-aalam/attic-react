@@ -28,3 +28,4 @@ React client App for the [Attic server](https://github.com/one-aalam/attic) buil
 
 ## Credits
 Fonts: [Inter](https://rsms.me/inter/) by [Rasmus Andersson](https://twitter.com/rsms) and [Gilroy](https://www.tinkov.info/gilroy.html) by [Radomir Tinkov](https://twitter.com/RadomirTinkov)
+Icons: [HeroIcons](https://github.com/sschoger/heroicons-ui) by Steve Schoger

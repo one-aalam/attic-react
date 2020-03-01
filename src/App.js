@@ -11,7 +11,7 @@ import AdminProfilePage from './AdminProfilePage';
 
 
 const App = () => (
-  <div className="App flex flex-col w-3/4 mx-auto my-12 items-center">
+  <div className="App">
     <Router>
       <Switch>
         <Route path="/" exact component={Home}></Route>
