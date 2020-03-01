@@ -11,7 +11,7 @@ const Layout = ({ children, match, history }) => {
         }
     };
 
-    const nav = () => (
+    const Header = () => (
         <header className="relative z-10 border-b border-gray-200 bg-white flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
             <div className="flex items-end">
                 <Link to="/" className="block nav-link" style={isActive('/')}>
@@ -78,8 +78,9 @@ const Layout = ({ children, match, history }) => {
 
     return (
         <React.Fragment>
-            {nav()}
-            <div className="container">{children}</div>
+            {Header()}
+            <main className="">{children}</main>
+            <footer></footer>
         </React.Fragment>
     );
 };

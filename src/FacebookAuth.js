@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import config from './config';
-import Button from './components/Button';
+import { ButtonSecondary } from './components/Button';
+import { FacebookIcon } from './components/Icon';
 
 const FacebookAuth =  ( { onSuccess } ) =>  {
 
@@ -29,9 +30,9 @@ const FacebookAuth =  ( { onSuccess } ) =>  {
                 autoLoad={false}
                 callback={responseCb}
                 render={renderProps => (
-                    <Button onClick={renderProps.onClick}>
-                        <i className="fab fa-facebook pr-2"></i> Login with Facebook
-                    </Button>
+                    <ButtonSecondary onClick={renderProps.onClick}>
+                        <FacebookIcon />Login with Facebook
+                    </ButtonSecondary>
                 )}
             />
     </div>
