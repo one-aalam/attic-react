@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
+import Loader from './components/Loader';
 import axios from 'axios';
 import { isAuth, getCookie, signout } from './utils';
 import config from './config';
@@ -11,6 +12,7 @@ const AdminProfilePage = ({ history }) => {
         email: ''
     });
     const [ users, setUsers ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
 
     const token = getCookie('token');
 
@@ -33,6 +35,8 @@ const AdminProfilePage = ({ history }) => {
                         history.push('/');
                     });
                 }
+            }).finally(() => {
+                setLoading(false);
             });
     };
 
@@ -54,6 +58,10 @@ const AdminProfilePage = ({ history }) => {
                 }
             });
     };
+
+    if (loading) {
+        return <Loader/>
+    }
 
     return (
         <Layout>
