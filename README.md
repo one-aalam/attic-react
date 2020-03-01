@@ -22,3 +22,9 @@ React client App for the [Attic server](https://github.com/one-aalam/attic) buil
  - [ ] Registration Page
  - [ ] SignIn page
  - [ ] Snapshot generation
+
+## Enhance
+- [X] Remove non-used fonts (Inter)
+
+## Credits
+Fonts: [Inter](https://rsms.me/inter/) by [Rasmus Andersson](https://twitter.com/rsms) and [Gilroy](https://www.tinkov.info/gilroy.html) by [Radomir Tinkov](https://twitter.com/RadomirTinkov)

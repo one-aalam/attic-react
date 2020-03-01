@@ -5,6 +5,7 @@ import Layout from './Layout';
 const Home = () => (
     <Layout>
         <header className="App-header">
+            <h2 className="font-display">Attic - React</h2>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
             Edit <code>src/App.js</code> and save to reload.
