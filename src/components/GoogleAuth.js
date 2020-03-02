@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import GoogleLogin from 'react-google-login';
-import config from './config';
-import { ButtonSecondary } from './components/Button';
-import { GoogleIcon } from './components/Icon';
+import config from '../config';
+import Button from './Button';
+import { GoogleIcon } from './Icon';
 
-const GoogleAuth =  ( { onSuccess } ) =>  {
+const GoogleAuth =  ( { onSuccess, className } ) =>  {
   const successFailureCb = response => {
     axios({
         method: 'POST',
@@ -29,12 +29,12 @@ const GoogleAuth =  ( { onSuccess } ) =>  {
                 onSuccess={successFailureCb}
                 onFailure={successFailureCb}
                 render={renderProps => (
-                    <ButtonSecondary
+                    <Button size="md" secondary display
                         onClick={renderProps.onClick}
                         disabled={renderProps.disabled}
                     >
                         <GoogleIcon />Login with Google
-                    </ButtonSecondary>
+                    </Button>
                 )}
                 cookiePolicy={'single_host_origin'}
             />

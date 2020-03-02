@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import config from './config';
-import { ButtonSecondary } from './components/Button';
-import { FacebookIcon } from './components/Icon';
+import config from '../config';
+import Button from './Button';
+import { FacebookIcon } from './Icon';
 
-const FacebookAuth =  ( { onSuccess } ) =>  {
+const FacebookAuth =  ( { onSuccess, className } ) =>  {
 
   const responseCb = response => {
     axios({
@@ -30,9 +30,9 @@ const FacebookAuth =  ( { onSuccess } ) =>  {
                 autoLoad={false}
                 callback={responseCb}
                 render={renderProps => (
-                    <ButtonSecondary onClick={renderProps.onClick}>
+                    <Button size="md" secondary display onClick={renderProps.onClick}>
                         <FacebookIcon />Login with Facebook
-                    </ButtonSecondary>
+                    </Button>
                 )}
             />
     </div>
