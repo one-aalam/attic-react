@@ -1,5 +1,5 @@
 import React from 'react';
-import Button, { OutlineButton, WhiteButton } from './Button';
+import Button from './Button';
 
 const BasicAuth = () => (
     <form className="bg-white px-8 pt-6 pb-2 mb-4">

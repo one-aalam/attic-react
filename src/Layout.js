@@ -21,6 +21,9 @@ const Layout = ({ children, match, history }) => {
                 <p className="hidden md:block ml-4 text-sm leading-5 text-gray-500">
                     Release 0.1.0
                 </p>
+                <Link to="/ds" className="hidden md:block ml-4 text-sm leading-5 text-gray-500" style={isActive('/ds')}>
+                    components
+                </Link>
             </div>
 
             {!isAuth() && (

@@ -60,9 +60,11 @@ const getBtnSize = (size) => {
       return "px-4 py-2 text-sm leading-5 ";
     case 'xl':
       return "px-8 py-3 md:py-4 md:text-xl md:px-10 leading-5 "
+    case 'xxl':
+      return "px-10 py-5 md:text-2xl md:px-12 leading-6 "
     case 'lg':
     default:
-      return "px-6 py-2 md:py-3 md:text-lg md:px-8 "
+      return "px-6 py-2 md:text-lg "
   }
 }
 
