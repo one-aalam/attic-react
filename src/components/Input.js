@@ -1,4 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+    className: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    icon: PropTypes.string,
+    invalid: PropTypes.bool,
+    message: PropTypes.string,
+    filter: PropTypes.instanceOf(RegExp),
+    onChange: PropTypes.func,
+};
+
+const defaultProps = {
+    className: undefined,
+    value: undefined,
+    icon: undefined,
+    invalid: false,
+    message: undefined,
+    filter: undefined,
+    onChange: () => {},
+};
 
 const Input = React.forwardRef(function Input({ icon , invalid, message, className, filter, onChange, ...inputProps }, ref ) {
 
@@ -32,5 +53,8 @@ const Input = React.forwardRef(function Input({ icon , invalid, message, classNa
         </div>
     );
 });
+
+Input.propTypes = propTypes;
+Input.defaultProps = defaultProps;
 
 export default Input;

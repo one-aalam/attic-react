@@ -43,6 +43,7 @@
     "@fullhuman/postcss-purgecss": "^2.1.0",
     "autoprefixer": "^9.7.4",
     "postcss-cli": "^7.1.0",
+    "prop-types": "^15.7.2",
     "tailwindcss": "^1.2.0"
   }
 }
