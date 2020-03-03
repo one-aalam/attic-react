@@ -7,6 +7,7 @@ import { H3 } from './components/Typography';
 // import { CircleImage } from './components/Image';
 import Input from './components/Input';
 import Textarea from './components/Textarea';
+import Breadcrumb from './components/Breadcrumb';
 
 const DS = () => (
     <Layout>
@@ -25,6 +26,7 @@ const DS = () => (
             <div className="flex justify-around p-8 align-middle self-center">
                 <span><Pill className="font-display"><FacebookIcon /> cool</Pill></span>
             </div> */}
+            <Breadcrumb items={["one", "two", "three"]} />
             <H3 className="font-display font-bold w-full text-center">Form Controls</H3>
             <Input onChange={() => {}} />
             <Input icon="hh" invalid={true} type="password" hasIcon={true} message={"this isn't cool with us fellas"} onChange={() => {}}/>
