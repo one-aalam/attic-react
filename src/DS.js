@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from './Layout';
 import Button, { WhiteButton, OutlineButton } from './components/Button';
 import { FacebookIcon, GoogleIcon } from './components/Icon';
@@ -9,8 +9,11 @@ import Input from './components/Input';
 import Textarea from './components/Textarea';
 import Breadcrumb from './components/Breadcrumb';
 import Avatar from './components/Avatar';
+import Modal from './components/Modal';
 
-const DS = () => (
+const DS = () => {
+    const [ showModal, setShowModal ] = useState(false);
+    return (
     <Layout>
         <header className="App-header text-center py-6">
             <h2 className="font-display text-center text-4xl">Design System</h2>
@@ -27,6 +30,15 @@ const DS = () => (
             <div className="flex justify-around p-8 align-middle self-center">
                 <span><Pill className="font-display"><FacebookIcon /> cool</Pill></span>
             </div> */}
+
+            <H3 className="font-display font-bold w-full text-center">Modal</H3>
+            <div className="flex justify-around p-8 align-middle self-center">
+                <span>
+                <Modal onClose={() => setShowModal(!showModal)} content={({close}) => {
+                    return <p onClick={close}>lorem ipsum doler sit mamet</p>
+                }} link={({ open }) => <Button display secondary onClick={open}>Open Modal</Button>}></Modal>
+                </span>
+            </div>
             <H3 className="font-display font-bold w-full text-center">Avatar</H3>
             <div className="flex justify-around p-8 align-middle self-center">
                 <span><Avatar name="Aftab" round bgCls="bg-gray-500" /></span>
@@ -40,7 +52,7 @@ const DS = () => (
             <Breadcrumb items={["one", "two", "three"]} />
             <H3 className="font-display font-bold w-full text-center">Form Controls</H3>
             <Input onChange={() => {}} />
-            <Input icon="hh" invalid={true} type="password" hasIcon={true} message={"this isn't cool with us fellas"} onChange={() => {}}/>
+            <Input icon="hh" invalid={true} type="password"  message={"this isn't cool with us fellas"} onChange={() => {}}/>
             <Textarea />
             <H3 className="font-display font-bold w-full text-center">Buttons</H3>
             <div className="flex justify-around p-8 align-middle self-center">
@@ -85,6 +97,6 @@ const DS = () => (
             </div>
         </div>
     </Layout>
-)
+)}
 
 export default DS;
