@@ -8,6 +8,7 @@ import { H3 } from './components/Typography';
 import Input from './components/Input';
 import Textarea from './components/Textarea';
 import Breadcrumb from './components/Breadcrumb';
+import Avatar from './components/Avatar';
 
 const DS = () => (
     <Layout>
@@ -26,6 +27,16 @@ const DS = () => (
             <div className="flex justify-around p-8 align-middle self-center">
                 <span><Pill className="font-display"><FacebookIcon /> cool</Pill></span>
             </div> */}
+            <H3 className="font-display font-bold w-full text-center">Avatar</H3>
+            <div className="flex justify-around p-8 align-middle self-center">
+                <span><Avatar name="Aftab" round bgCls="bg-gray-500" /></span>
+                <span><Avatar name="Rajat" round bgCls="bg-yellow-500" /></span>
+                <span><Avatar name="Vijay" round bgCls="bg-orange-500"/></span>
+                <span><Avatar name="Aftab" round bgCls="bg-red-500" /></span>
+                <span><Avatar name="Rajat" round bgCls="bg-green-500" /></span>
+                <span><Avatar name="Vijay" round bgCls="bg-pink-500"/></span>
+                <span><Avatar name="Purple" round bgCls="bg-green-500" /></span>
+            </div>
             <Breadcrumb items={["one", "two", "three"]} />
             <H3 className="font-display font-bold w-full text-center">Form Controls</H3>
             <Input onChange={() => {}} />
