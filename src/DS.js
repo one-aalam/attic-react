@@ -2,6 +2,8 @@ import React from 'react';
 import Layout from './Layout';
 import Button, { WhiteButton, OutlineButton } from './components/Button';
 import { FacebookIcon, GoogleIcon } from './components/Icon';
+import { H3 } from './components/Typography';
+import Pill from './components/Pill';
 
 const DS = () => (
     <Layout>
@@ -12,6 +14,11 @@ const DS = () => (
             </p>
         </header>
         <div className="mx-auto w-8/12">
+            <H3 className="font-display font-bold w-full text-center">Pills</H3>
+            <div className="flex justify-around p-8 align-middle self-center">
+                <span><Pill className="font-display"><FacebookIcon /> cool</Pill></span>
+            </div>
+            <H3 className="font-display font-bold w-full text-center">Buttons</H3>
             <div className="flex justify-around p-8 align-middle self-center">
                 <span><Button display size="sm">Small</Button></span>
                 <span><Button display size="md">Medium</Button></span>
