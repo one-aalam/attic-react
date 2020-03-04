@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import useEscKeyDown from '../hooks/useEscKeyDown';
 
@@ -19,6 +19,11 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link }) => {
       }, [ isControlled, onClose ]);
 
     useEscKeyDown(closeModal, isOpen);
+
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        return () => document.body.style.overflow = 'visible';
+    }, [ isOpen ]);
 
     return (
         <React.Fragment>
