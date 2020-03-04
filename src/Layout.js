@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useRef } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { isAuth, signout } from './utils';
+import { useSticky } from './hooks/useSticky';
 
 const Layout = ({ children, match, history }) => {
     const isActive = path => {
@@ -11,8 +12,11 @@ const Layout = ({ children, match, history }) => {
         }
     };
 
-    const Header = () => (
-        <header className="relative z-10 border-b border-gray-200 bg-white flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    const Header = () => {
+        const $headerRef = useRef();
+        useSticky($headerRef);
+        return (
+        <header ref={$headerRef} className="relative z-10 border-b border-gray-200 bg-white flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
             <div className="flex items-end">
                 <Link to="/" className="block nav-link" style={isActive('/')}>
                     <img className="h-6 w-auto inline-block" src="/apple-touch-icon.png" alt="Attic - React" />
@@ -77,7 +81,7 @@ const Layout = ({ children, match, history }) => {
                 </React.Fragment>
             )}
         </header>
-    );
+    )};
 
     return (
         <React.Fragment>

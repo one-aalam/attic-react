@@ -34,7 +34,7 @@ const DS = () => {
             <H3 className="font-display font-bold w-full text-center">Modal</H3>
             <div className="flex justify-around p-8 align-middle self-center">
                 <span>
-                <Modal onClose={() => setShowModal(!showModal)} content={({close}) => {
+                <Modal onClose={() => setShowModal(!showModal)} render={({close}) => {
                     return <p onClick={close}>lorem ipsum doler sit mamet</p>
                 }} link={({ open }) => <Button display secondary onClick={open}>Open Modal</Button>}></Modal>
                 </span>
