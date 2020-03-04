@@ -1,6 +1,7 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import useEscKeyDown from '../hooks/useEscKeyDown';
+import useOnOutsideClick from '../hooks/useOnOutsideClick';
 
 const Modal = ({ isOpen: _IsOpen , onClose, title, render, link }) => {
     const [stateIsOpen, setStateOpen] = useState(false);
@@ -18,6 +19,7 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link }) => {
         }
       }, [ isControlled, onClose ]);
 
+    useOnOutsideClick($modalRef, closeModal, isOpen, $modalOverlayRef);
     useEscKeyDown(closeModal, isOpen);
 
     useEffect(() => {
@@ -29,13 +31,13 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link }) => {
         <React.Fragment>
         {!isControlled && link({ open: () => setStateOpen(true) })}
         {isOpen &&
-            ReactDOM.createPortal(<div ref={$modalRef}
+            ReactDOM.createPortal(<div
                  role="dialog" aria-labelledby="modal_label" aria-modal="true" aria-hidden={!isOpen}
                  className="modal transition-opacity duration-75 ease-in fixed w-full h-full top-0 left-0 flex items-center justify-center">
                 {/* Modal: Overlay */}
                 <div ref={$modalOverlayRef} className="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
                  {/* Modal: Container */}
-                <div className="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                <div ref={$modalRef} className="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
                     {/* Modal: Container (Esc) */}
                     <div onClick={closeModal} className="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
                         <svg className="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
