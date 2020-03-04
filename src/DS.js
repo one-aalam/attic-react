@@ -10,6 +10,7 @@ import Textarea from './components/Textarea';
 import Breadcrumb from './components/Breadcrumb';
 import Avatar from './components/Avatar';
 import Modal from './components/Modal';
+import ConfirmModal from './components/ConfirmModal';
 
 const DS = () => {
     const [ showModal, setShowModal ] = useState(false);
@@ -43,6 +44,10 @@ const DS = () => {
                     return <React.Fragment><p>lorem ipsum doler sit amet</p> </React.Fragment>
                 }} link={({ open }) => <Button display secondary onClick={open}>Open Modal (aside)</Button>}></Modal>
                 </span>
+                <span>
+                <ConfirmModal title="Centered Modal" variant="danger" onConfirm={() => console.log('confirm')} link={({ open }) => <Button display secondary onClick={open}>Open Confirm Modal </Button>}></ConfirmModal>
+                </span>
+
             </div>
             <H3 className="font-display font-bold w-full text-center">Avatar</H3>
             <div className="flex justify-around p-8 align-middle self-center">

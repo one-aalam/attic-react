@@ -54,7 +54,7 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link, aside, showClos
                         "modal-content py-4 text-left px-6 flex flex-col h-full"}>
                         {/* Modal: Content Title */}
                         <div className="flex flex-none justify-between items-center pb-3">
-                            {title && <p className="text-2xl font-display font-bold" id="modal_label">{title}</p>}
+                            {title && <h3 className="text-2xl font-display font-bold" id="modal_label">{title}</h3>}
                             {showCloseIcon &&
                             <div onClick={closeModal} className="modal-close cursor-pointer z-50">
                                 <svg className="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -64,7 +64,7 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link, aside, showClos
                         </div>
 
                         {/* Modal: Content Body */}
-                        <div className="flex-grow">
+                        <div className="flex-grow whitespace-pre-wrap text-lg">
                             { render({ close: closeModal }) }
                         </div>
 
@@ -81,7 +81,7 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link, aside, showClos
 )}
 
 const Footer = ({ close, showClose = true, closeBtnLabel = 'dismiss', children }) => (
-    <div className="flex flex-none justify-end pt-2 font-display">
+    <div className="flex flex-none justify-end pb-2 font-display">
         {showClose && <button onClick={close} className="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">{closeBtnLabel}</button>}
         {children}
     </div>

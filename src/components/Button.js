@@ -52,6 +52,23 @@ export const OutlineButton = ({ children, size, display, upper, ...buttonProps }
   );
 }
 
+export const ColoredButton = ({ children, size, color, display, upper, ...buttonProps }) => {
+  return (
+      <button
+        className={
+          (getBtnSize(size)) +
+          (getBtnColor(color)) +
+          (display ? "font-display font-extrabold " : "font-body font-medium ") +
+          (upper ? "uppercase " : "") +
+        "inline-flex items-center text-white rounded-md shadow-md hover:shadow-lg focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+        }
+        {...buttonProps}
+      >
+        {children}
+      </button>
+  );
+}
+
 const getBtnSize = (size) => {
   switch(size) {
     case 'sm':
@@ -65,6 +82,16 @@ const getBtnSize = (size) => {
     case 'lg':
     default:
       return "px-6 py-2 md:text-lg "
+  }
+}
+
+const getBtnColor = (color) => {
+  switch(color) {
+    case 'red':
+      return "bg-red-600 hover:bg-red-800  border border-red-100 "
+    case 'gray':
+    default:
+      return "bg-gray-600 hover:bg-gray-800 border border-gray-100 "
   }
 }
 
