@@ -1,4 +1,5 @@
 import React, { useRef, useState, useCallback } from 'react';
+import ReactDOM from 'react-dom';
 import useEscKeyDown from '../hooks/useEscKeyDown';
 
 const Modal = ({ isOpen: _IsOpen , onClose, title, render, link }) => {
@@ -23,7 +24,7 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link }) => {
         <React.Fragment>
         {!isControlled && link({ open: () => setStateOpen(true) })}
         {isOpen &&
-            <div ref={$modalRef}
+            ReactDOM.createPortal(<div ref={$modalRef}
                  role="dialog" aria-labelledby="modal_label" aria-modal="true" aria-hidden={!isOpen}
                  className="modal transition-opacity duration-75 ease-in fixed w-full h-full top-0 left-0 flex items-center justify-center">
                 {/* Modal: Overlay */}
@@ -42,7 +43,7 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link }) => {
                     <div className="modal-content py-4 text-left px-6">
                         {/* Modal: Content Title */}
                         <div className="flex justify-between items-center pb-3">
-                            <p className="text-2xl font-bold">{title}</p>
+                            <p className="text-2xl font-bold" id="modal_label">{title}</p>
                             <div onClick={closeModal} className="modal-close cursor-pointer z-50">
                                 <svg className="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                                     <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
@@ -60,9 +61,12 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link }) => {
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            </div>,
+            $root
+            )}
     </React.Fragment>
 )}
+
+const $root = document.getElementById('root');
 
 export default Modal;
