@@ -34,9 +34,14 @@ const DS = () => {
             <H3 className="font-display font-bold w-full text-center">Modal</H3>
             <div className="flex justify-around p-8 align-middle self-center">
                 <span>
-                <Modal onClose={() => setShowModal(!showModal)} render={({close}) => {
-                    return <p onClick={close}>lorem ipsum doler sit mamet</p>
-                }} link={({ open }) => <Button display secondary onClick={open}>Open Modal</Button>}></Modal>
+                <Modal title="Centered Modal" onClose={() => setShowModal(!showModal)} render={({close}) => {
+                    return <React.Fragment><p>lorem ipsum doler sit amet</p> </React.Fragment>
+                }} link={({ open }) => <Button display secondary onClick={open}>Open Modal (centered)</Button>}></Modal>
+                </span>
+                <span>
+                <Modal title="Modal on the sides" aside onClose={() => setShowModal(!showModal)} render={({close}) => {
+                    return <React.Fragment><p>lorem ipsum doler sit amet</p> </React.Fragment>
+                }} link={({ open }) => <Button display secondary onClick={open}>Open Modal (aside)</Button>}></Modal>
                 </span>
             </div>
             <H3 className="font-display font-bold w-full text-center">Avatar</H3>
