@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextareaAutoSize from 'react-textarea-autosize';
+import Label from './Label';
+
 
 const propTypes = {
     className: PropTypes.string,
     label: PropTypes.string,
+    muteLabel: PropTypes.bool,
+    required: PropTypes.bool,
     minRows: PropTypes.number,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     invalid: PropTypes.bool,
@@ -15,6 +19,8 @@ const propTypes = {
 const defaultProps = {
     className: undefined,
     label: undefined,
+    muteLabel: false,
+    required: false,
     minRows: 2,
     value: undefined,
     invalid: false,
@@ -22,7 +28,7 @@ const defaultProps = {
     onChange: () => {},
 };
 
-const Textarea = React.forwardRef(function Textarea({ label, invalid, message, className, filter, onChange, ...textAreaProps }, ref ) {
+const Textarea = React.forwardRef(function Textarea({id, label, invalid, message, className, filter, onChange, muteLabel, required,  ...textAreaProps }, ref ) {
 
     const handleChange = event => {
         onChange(event.target.value, event);
@@ -30,13 +36,14 @@ const Textarea = React.forwardRef(function Textarea({ label, invalid, message, c
 
     return(
         <div className="mb-4">
-             { label && <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">{label}</label>}
+             { label && <Label label={label} htmlFor={id} muted={muteLabel} required={required} />}
             <div className="w-full inline-block">
                 <TextareaAutoSize
+                    htmlId={id}
                     className={
                         (className ? className : "")  +
-                        (invalid ? 'border-red-500 ' : 'border-indigo-200 ') +
-                        "appearance-none block w-full h-full bg-indigo-100 text-gray-700 hover:bg-white hover:border-indigo-300 focus:border-indigo-400 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        (invalid ? 'border-red-500 ' : 'border-gray-200 ') +
+                        "appearance-none block w-full h-full text-gray-700 bg-gray-100 hover:bg-gray-200 hover:border-gray-400 focus:border-indigo-400 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                     }
                     {...textAreaProps}
                     style={{ transition: "all .15s ease" }}
@@ -44,7 +51,7 @@ const Textarea = React.forwardRef(function Textarea({ label, invalid, message, c
                     inputRef={ref || undefined}
                 />
             </div>
-            { message && <p className={(invalid ? "text-red-500" : "") + " text-xs italic mt-1"}>{message}</p>}
+            { message && <p className={(invalid ? "text-red-500 font-bold " : "text-gray-800 ") + "pl-1 font-light text-xs mt-1"}>{message}</p>}
         </div>
     );
 });
