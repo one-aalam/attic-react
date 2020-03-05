@@ -8,7 +8,7 @@ import Home from './Home';
 import SignIn from './SignIn';
 import ProfilePage from './ProfilePage';
 import AdminProfilePage from './AdminProfilePage';
-import DS from './DS';
+import DS from './ds';
 
 
 const App = () => (
@@ -17,7 +17,7 @@ const App = () => (
       <Switch>
         <Route path="/" exact component={Home}></Route>
         <Route path="/signin" exact component={SignIn}></Route>
-        <Route path="/ds" exact component={DS}></Route>
+        <Route path="/ds" component={DS}></Route>
         <AdminRoute path="/admin" exact component={AdminProfilePage}></AdminRoute>
         <PrivateRoute path="/profile" exact component={ProfilePage}></PrivateRoute>
       </Switch>
