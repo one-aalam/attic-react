@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './assets/fonts/Inter/inter.css';
 import './assets/fonts/Gilroy/gilroy.css';
 import './styles.css';
+import './custom.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

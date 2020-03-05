@@ -31,10 +31,12 @@ const Toast = () => {
                 {
                     toasts.map(toast => (
                         <CSSTransition key={toast.id} classNames="attic-toast" timeout={200}>
-                            <div className="w-64 h-20 mb-4 p-3 rounded shadow-sm bg-indigo-600 text-white" key={toast.id} type={toast.type} onClick={() => removeToast(toast.id)}>
+                            <div className="w-64 h-20 mb-4 p-3 rounded shadow-sm bg-indigo-600 text-white transition-all duration-500 ease-in-out clearfix"
+                                key={toast.id} type={toast.type} onClick={() => removeToast(toast.id)}
+                                style={{transform: 'translateZ(0)'}}>
                                 <button>close</button>
-                                {toast.title && <span>{toast.title}</span>}
-                                {toast.message && <span>{toast.message}</span>}
+                                {toast.title && <span className="text-lg p-2">{toast.title}</span>}
+                                {toast.message && <span className="whitespace-pre-wrap p-2">{toast.message}</span>}
                             </div>
                         </CSSTransition>
                     ))

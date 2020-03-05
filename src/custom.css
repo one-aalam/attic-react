@@ -1,0 +1,11 @@
+
+.attic-toast-enter,
+.attic-toast-exit.attic-toast-exit-active {
+    opacity: 0;
+    right: -10px;
+}
+.attic-toast-exit,
+.attic-toast-enter.attic-toast-enter-active {
+    opacity: 1;
+    right: 0;
+}
