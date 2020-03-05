@@ -51,10 +51,10 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link, aside, showClos
                     {/* Modal: Content */}
                     <div className={
                         (aside ? 'min-h-screen ' : '') +
-                        "modal-content py-4 text-left px-6 flex flex-col h-full"}>
+                        "modal-content text-left flex flex-col"} style={{ maxHeight: !aside ? '90vh' : null }}>
                         {/* Modal: Content Title */}
-                        <div className="flex flex-none justify-between items-center pb-3">
-                            {title && <h3 className="text-2xl font-display font-bold" id="modal_label">{title}</h3>}
+                        <div className="flex flex-none justify-between items-center py-2 px-6">
+                            {title && <h3 className="text-3xl font-display font-bold" id="modal_label">{title}</h3>}
                             {showCloseIcon &&
                             <div onClick={closeModal} className="modal-close cursor-pointer z-50">
                                 <svg className="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -64,7 +64,7 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link, aside, showClos
                         </div>
 
                         {/* Modal: Content Body */}
-                        <div className="flex-grow whitespace-pre-wrap text-lg">
+                        <div className="flex-grow whitespace-pre-wrap overflow-y-auto py-2 px-6">
                             { render({ close: closeModal }) }
                         </div>
 
@@ -81,10 +81,10 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link, aside, showClos
 )}
 
 const Footer = ({ close, showClose = true, closeBtnLabel = 'dismiss', children }) => (
-    <div className="flex flex-none justify-end pb-2 font-display">
-        {showClose && <button onClick={close} className="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">{closeBtnLabel}</button>}
+    <footer className="flex flex-none justify-end font-display bg-indigo-100 py-2 px-6">
+        {showClose && <button onClick={close} className="px-4 bg-transparent rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">{closeBtnLabel}</button>}
         {children}
-    </div>
+    </footer>
 )
 
 Modal.Footer = Footer;

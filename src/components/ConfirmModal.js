@@ -56,7 +56,7 @@ const ConfirmModal = ({
           {/* Heading */}
           <h3 className="text-2xl pb-6 font-medium">{title}</h3>
           {/* Message */}
-          {message && <div className="text-lg pb-10 whitespace-pre-wrap">{message}</div>}
+          {message && <div className="pb-10 whitespace-pre-wrap">{message}</div>}
           {/* Actions */}
           <Modal.Footer showClose={false}>
             <WhiteButton onClick={modal.close}>
@@ -80,7 +80,6 @@ const ConfirmModal = ({
                     {confirmText}
                 </Button>
             }
-
           </Modal.Footer>
         </React.Fragment>
       )}

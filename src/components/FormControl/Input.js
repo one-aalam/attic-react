@@ -35,7 +35,7 @@ const Input = React.forwardRef(function Input({ id, type, icon , label, invalid,
           onChange(event.target.value, event);
         }
     };
-    console.log(type);
+
     return(
         <div className="mb-4">
             { label && <Label label={label} htmlFor={id} muted={muteLabel} required={required} />}

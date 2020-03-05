@@ -18,12 +18,20 @@ const ModalIndex = () => {
                 }} link={({ open }) => <Button display secondary onClick={open}>Open Modal (centered)</Button>}></Modal>
                 </span>
                 <span>
+                <Modal title="Centered Modal (Bigger Content)" onClose={() => setShowModal(!showModal)} render={({close}) => {
+                    return <React.Fragment>
+                        <p>lorem ipsum dolerlorem ipsum doler sit  m ipsum doler s m ipsum doler s m ipsum doler s m ipsum doler s m ipsum doler s ametlorem ipsum doler sit ametlorem ipsum doler sit ame ametlorem ipsum doler sit amet  ametlorem ipsum doler sit amet  ametlorem ipsum doler sit amet  ametlorem ipsum doler sit amet  t sit amet lorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit ametlorem ipsum doler sit amet</p>
+                    </React.Fragment>
+                }} link={({ open }) => <Button display secondary onClick={open}>Open Modal (centered)</Button>}></Modal>
+                </span>
+
+                <span>
                 <Modal title="Modal on the sides" aside onClose={() => setShowModal(!showModal)} render={({close}) => {
                     return <React.Fragment><p>lorem ipsum doler sit amet</p> </React.Fragment>
                 }} link={({ open }) => <Button display secondary onClick={open}>Open Modal (aside)</Button>}></Modal>
                 </span>
                 <span>
-                <ConfirmModal title="Centered Modal" variant="danger" onConfirm={() => console.log('confirm')} link={({ open }) => <Button display secondary onClick={open}>Open Confirm Modal </Button>}></ConfirmModal>
+                    <ConfirmModal title="Confirm Modal" variant="danger" onConfirm={() => console.log('confirm')} link={({ open }) => <Button display secondary onClick={open}>Open Confirm Modal </Button>}></ConfirmModal>
                 </span>
             </div>
     </React.Fragment>
