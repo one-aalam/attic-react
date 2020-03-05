@@ -4,6 +4,8 @@ import { H3 } from '../components/Typography';
 import Button, { WhiteButton, OutlineButton } from '../components/Button';
 import Modal from '../components/Modal';
 import ConfirmModal from '../components/ConfirmModal';
+import { showToast } from '../utils';
+import Toast from '../components/Toast';
 
 
 const ModalIndex = () => {
@@ -32,6 +34,9 @@ const ModalIndex = () => {
                 </span>
                 <span>
                     <ConfirmModal title="Confirm Modal" variant="danger" onConfirm={() => console.log('confirm')} link={({ open }) => <Button display secondary onClick={open}>Open Confirm Modal </Button>}></ConfirmModal>
+                </span>
+                <span>
+                <Button display secondary onClick={() => showToast({ title: 'Confirmed'})}>Show Toast</Button>
                 </span>
             </div>
     </React.Fragment>

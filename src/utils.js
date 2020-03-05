@@ -1,4 +1,5 @@
 import cookie from 'js-cookie';
+import pubsub from 'pubsub-js';
 
 // Set cookie
 export const setCookie = (key, value) => {
@@ -78,3 +79,9 @@ export const updateUser = (response, next) => {
     }
     next();
 };
+
+
+
+export const showToast = toast => pubsub.publish('toast', toast);
+export const showSuccessToast = toast => showToast(toast);
+export const showErrorToast = toast => showToast({ ...toast, type: 'danger', duration: 0 });

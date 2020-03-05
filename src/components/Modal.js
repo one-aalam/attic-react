@@ -33,7 +33,7 @@ const Modal = ({ isOpen: _IsOpen , onClose, title, render, link, aside, showClos
         {isOpen &&
             ReactDOM.createPortal(<div
                  role="dialog" aria-labelledby="modal_label" aria-modal="true" aria-hidden={!isOpen}
-                 className="modal transition-opacity duration-75 ease-in w-full h-full top-0 left-0 flex items-center justify-center z-50 fixed overflow-x-hidden overflow-y-auto">
+                 className="modal transition-opacity duration-75 ease-in w-full h-full top-0 left-0 flex items-center justify-center z-40 fixed overflow-x-hidden overflow-y-auto">
                 {/* Modal: Overlay */}
                 <div ref={$modalOverlayRef} className="modal-overlay absolute w-full min-h-full bg-gray-900 opacity-50"></div>
                  {/* Modal: Container */}
